@@ -10,15 +10,10 @@ import UIKit
 /// `UIButton`extension for setting up an attributed button.
 extension UIButton {
     
-    func setup(
-        withTitle title: String,
-        font: UIFont, textColor: UIColor,
-        backgroundColor: UIColor = .clear
-    ) {
+    func setup(withTitle title: String, font: UIFont, textColor: UIColor) {
         let attributes: [NSAttributedString.Key : Any] = [
             NSAttributedString.Key.font: font,
-            NSAttributedString.Key.foregroundColor: textColor,
-            NSAttributedString.Key.backgroundColor: backgroundColor
+            NSAttributedString.Key.foregroundColor: textColor
         ]
         
         let attributedTitle: NSAttributedString = NSAttributedString(
