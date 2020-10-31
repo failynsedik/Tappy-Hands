@@ -13,6 +13,7 @@
 		3B5B7175254D2474006AE954 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7174254D2474006AE954 /* HomeViewController.swift */; };
 		3B5B7188254DCBCD006AE954 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7187254DCBCD006AE954 /* UIColor+Hex.swift */; };
 		3B5B718F254DCD93006AE954 /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B718E254DCD93006AE954 /* UIView+Subviews.swift */; };
+		3B5B7194254DCEE3006AE954 /* UIButton+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7193254DCEE3006AE954 /* UIButton+Attributed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3B5B7174254D2474006AE954 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3B5B7187254DCBCD006AE954 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		3B5B718E254DCD93006AE954 /* UIView+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; };
+		3B5B7193254DCEE3006AE954 /* UIButton+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Attributed.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		3B5B7180254DCAC5006AE954 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3B5B7192254DCED6006AE954 /* UIButtonExtensions */,
 				3B5B7186254DCBC0006AE954 /* UIColorExtensions */,
 				3B5B718D254DCD83006AE954 /* UIViewExtensions */,
 			);
@@ -105,6 +108,14 @@
 				3B5B718E254DCD93006AE954 /* UIView+Subviews.swift */,
 			);
 			path = UIViewExtensions;
+			sourceTree = "<group>";
+		};
+		3B5B7192254DCED6006AE954 /* UIButtonExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B7193254DCEE3006AE954 /* UIButton+Attributed.swift */,
+			);
+			path = UIButtonExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5B7194254DCEE3006AE954 /* UIButton+Attributed.swift in Sources */,
 				3B5B715D254C1913006AE954 /* AppDelegate.swift in Sources */,
 				3B5B7188254DCBCD006AE954 /* UIColor+Hex.swift in Sources */,
 				3B5B7175254D2474006AE954 /* HomeViewController.swift in Sources */,
