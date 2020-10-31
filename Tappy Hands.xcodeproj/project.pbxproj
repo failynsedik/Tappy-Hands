@@ -10,6 +10,7 @@
 		3B5B715D254C1913006AE954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B715C254C1913006AE954 /* AppDelegate.swift */; };
 		3B5B7166254C1914006AE954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B7165254C1914006AE954 /* Assets.xcassets */; };
 		3B5B7169254C1914006AE954 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B5B7167254C1914006AE954 /* LaunchScreen.storyboard */; };
+		3B5B7175254D2474006AE954 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7174254D2474006AE954 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		3B5B7165254C1914006AE954 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B5B7168254C1914006AE954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B5B716A254C1914006AE954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5B7174254D2474006AE954 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +52,29 @@
 		3B5B715B254C1913006AE954 /* Tappy Hands */ = {
 			isa = PBXGroup;
 			children = (
+				3B5B7173254D244C006AE954 /* ViewModel */,
+				3B5B7172254D2446006AE954 /* View */,
 				3B5B715C254C1913006AE954 /* AppDelegate.swift */,
 				3B5B7165254C1914006AE954 /* Assets.xcassets */,
 				3B5B7167254C1914006AE954 /* LaunchScreen.storyboard */,
 				3B5B716A254C1914006AE954 /* Info.plist */,
 			);
 			path = "Tappy Hands";
+			sourceTree = "<group>";
+		};
+		3B5B7172254D2446006AE954 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B7174254D2474006AE954 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B5B7173254D244C006AE954 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5B715D254C1913006AE954 /* AppDelegate.swift in Sources */,
+				3B5B7175254D2474006AE954 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
