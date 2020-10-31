@@ -45,8 +45,8 @@ class HomeViewController: UIViewController {
         return label
     }()
     
-    private let startGameButton: UIButton = {
-        let button: UIButton = UIButton(type: .custom)
+    private let startGameButton: THButton = {
+        let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Start Game",
             font: UIFont.systemFont(ofSize: 40, weight: .black),
