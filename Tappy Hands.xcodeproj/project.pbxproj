@@ -15,6 +15,7 @@
 		3B5B718F254DCD93006AE954 /* UIView+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B718E254DCD93006AE954 /* UIView+Subviews.swift */; };
 		3B5B7194254DCEE3006AE954 /* UIButton+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7193254DCEE3006AE954 /* UIButton+Attributed.swift */; };
 		3B5B7199254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B7198254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift */; };
+		3B5B71A7254DE3B4006AE954 /* THButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71A6254DE3B4006AE954 /* THButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3B5B718E254DCD93006AE954 /* UIView+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Subviews.swift"; sourceTree = "<group>"; };
 		3B5B7193254DCEE3006AE954 /* UIButton+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Attributed.swift"; sourceTree = "<group>"; };
 		3B5B7198254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Shortcuts.swift"; sourceTree = "<group>"; };
+		3B5B71A6254DE3B4006AE954 /* THButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3B5B7173254D244C006AE954 /* ViewModel */,
 				3B5B7172254D2446006AE954 /* View */,
+				3B5B71A4254DE399006AE954 /* Shared */,
 				3B5B7180254DCAC5006AE954 /* Utilities */,
 				3B5B715C254C1913006AE954 /* AppDelegate.swift */,
 				3B5B7165254C1914006AE954 /* Assets.xcassets */,
@@ -127,6 +130,22 @@
 				3B5B7198254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift */,
 			);
 			path = NSLayoutConstraintExtensions;
+			sourceTree = "<group>";
+		};
+		3B5B71A4254DE399006AE954 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B71A5254DE3A2006AE954 /* View */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3B5B71A5254DE3A2006AE954 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B71A6254DE3B4006AE954 /* THButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5B7194254DCEE3006AE954 /* UIButton+Attributed.swift in Sources */,
+				3B5B71A7254DE3B4006AE954 /* THButton.swift in Sources */,
 				3B5B715D254C1913006AE954 /* AppDelegate.swift in Sources */,
 				3B5B7188254DCBCD006AE954 /* UIColor+Hex.swift in Sources */,
 				3B5B7199254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift in Sources */,
