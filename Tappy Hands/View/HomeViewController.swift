@@ -66,6 +66,13 @@ class HomeViewController: UIViewController {
         // MARK: Additional View/Subviews Configuration
         view.backgroundColor = .white
         
+        // MARK: Selector Setup
+        
+        startGameButton.addTarget(
+            self, action: #selector(didTapStartGame),
+            for: .touchUpInside
+        )
+        
         // MARK: Subviews
         view.addSubviews(
             backgroundImageView, logoImageView,
@@ -97,6 +104,19 @@ class HomeViewController: UIViewController {
             startGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+    }
+    
+}
+
+// MARK: - Selectors
+
+extension HomeViewController {
+    
+    @objc private func didTapStartGame() {
+        let gameVC = GameViewController()
+        gameVC.modalPresentationStyle = .fullScreen
+        gameVC.modalTransitionStyle = .crossDissolve
+        present(gameVC, animated: true, completion: nil)
     }
     
 }
