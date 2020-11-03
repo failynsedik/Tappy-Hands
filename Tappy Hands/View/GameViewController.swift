@@ -9,6 +9,10 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private var viewModel: GameViewModel!
+    
     // MARK: - View Properties
     
     private let backgroundImageView: UIImageView = {
@@ -85,10 +89,28 @@ class GameViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Initializers
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        viewModel = GameViewModel(delegate: self)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK: Selector Setup
+        
+        tapMeButton.addTarget(
+            self, action: #selector(didTapTapMe),
+            for: .touchUpInside
+        )
         
         // MARK: Subviews
         view.addSubviews(
@@ -136,6 +158,26 @@ class GameViewController: UIViewController {
             tapMeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             tapMeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+    }
+    
+}
+
+// MARK: - GameDelegate
+
+extension GameViewController {
+    
+    @objc private func didTapTapMe() {
+        viewModel.didTapTapMe()
+    }
+    
+}
+
+// MARK: - GameDelegate
+
+extension GameViewController: GameDelegate {
+    
+    func gameViewModel(_ gameViewModel: GameViewModel, newScore score: String) {
+        scoreValueLabel.text = score
     }
     
 }
