@@ -209,6 +209,7 @@ extension GameViewController: GameDelegate {
     }
     
     func gameViewModel(_ gameViewModel: GameViewModel, showEndGameWithScore score: String) {
+        // TODO: Create `EndGameViewController` and show it.
     }
     
 }
