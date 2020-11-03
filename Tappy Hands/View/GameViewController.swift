@@ -86,6 +86,7 @@ class GameViewController: UIViewController {
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
         button.clipsToBounds = true
         button.layer.cornerRadius = 4.0
+        button.isEnabled = false
         return button
     }()
     
@@ -158,6 +159,10 @@ class GameViewController: UIViewController {
             tapMeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             tapMeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+        
+        // MARK: viewDidLoad viewModel Calls
+        viewModel.setInitialValues()
+        viewModel.startCountdownTimer()
     }
     
 }
@@ -176,8 +181,34 @@ extension GameViewController {
 
 extension GameViewController: GameDelegate {
     
+    func gameViewModel(
+        _ gameViewModel: GameViewModel,
+        tapMeButtonTitle title: String,
+        shouldEnableTapMeButton shouldEnable: Bool
+    ) {
+        tapMeButton.setup(
+            withTitle: title,
+            font: UIFont.systemFont(ofSize: 50, weight: .black),
+            textColor: UIColor.white
+        )
+        
+        tapMeButton.isEnabled = shouldEnable
+    }
+    
+    func gameViewModel(
+        _ gameViewModel: GameViewModel,
+        gameTime time: String,
+        shouldEnableTapMeButton shouldEnable: Bool
+    ) {
+        timeValueLabel.text = time
+        tapMeButton.isEnabled = shouldEnable
+    }
+    
     func gameViewModel(_ gameViewModel: GameViewModel, newScore score: String) {
         scoreValueLabel.text = score
+    }
+    
+    func gameViewModel(_ gameViewModel: GameViewModel, showEndGameWithScore score: String) {
     }
     
 }
