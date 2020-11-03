@@ -18,6 +18,7 @@
 		3B5B71A7254DE3B4006AE954 /* THButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71A6254DE3B4006AE954 /* THButton.swift */; };
 		3B5B71B025519114006AE954 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71AF25519114006AE954 /* GameViewController.swift */; };
 		3B5B71B32551915F006AE954 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71B22551915F006AE954 /* UIView+Shadow.swift */; };
+		3B5B71B725519900006AE954 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71B625519900006AE954 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3B5B71A6254DE3B4006AE954 /* THButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THButton.swift; sourceTree = "<group>"; };
 		3B5B71AF25519114006AE954 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3B5B71B22551915F006AE954 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		3B5B71B625519900006AE954 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewModel.swift; path = "Tappy Hands/Utilities/UIViewExtensions/GameViewModel.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +92,9 @@
 		3B5B7173254D244C006AE954 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3B5B71B625519900006AE954 /* GameViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		3B5B7180254DCAC5006AE954 /* Utilities */ = {
@@ -231,6 +234,7 @@
 				3B5B7199254DD22F006AE954 /* NSLayoutConstraint+Shortcuts.swift in Sources */,
 				3B5B7175254D2474006AE954 /* HomeViewController.swift in Sources */,
 				3B5B71B32551915F006AE954 /* UIView+Shadow.swift in Sources */,
+				3B5B71B725519900006AE954 /* GameViewModel.swift in Sources */,
 				3B5B718F254DCD93006AE954 /* UIView+Subviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
