@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private var viewModel: HomeViewModel = HomeViewModel()
+    
     // MARK: - View Properties
     
     private let backgroundImageView: UIImageView = {
@@ -67,7 +71,6 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         // MARK: Selector Setup
-        
         startGameButton.addTarget(
             self, action: #selector(didTapStartGame),
             for: .touchUpInside
@@ -104,6 +107,11 @@ class HomeViewController: UIViewController {
             startGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        highScoreValueLabel.text = viewModel.highScore
     }
     
 }

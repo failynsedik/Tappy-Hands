@@ -37,7 +37,7 @@ class GameViewModel {
     
     private var tapCount: Int = 0 {
         didSet {
-            delegate?.gameViewModel(self, newScore: String(tapCount))
+            delegate?.gameViewModel(self, newScore: score)
         }
     }
     
@@ -61,6 +61,11 @@ class GameViewModel {
     }
     
     // MARK: - Outputs
+    
+    /// User's current score.
+    private var score: String {
+        return String(tapCount)
+    }
     
     private var tapMeButtonTitle: String {
         return countdownTime == 0 ? "Tap Me" : String(countdownTime)
@@ -112,9 +117,20 @@ extension GameViewModel {
             
             if strongSelf.gameTime == 0 {
                 strongSelf.gameTimer.invalidate()
+                strongSelf.saveHighScore()
                 strongSelf.showEndGame(afterDelay: 2.0)
             }
         })
+    }
+    
+    /// Saves the user's current score as the new high score ONLY IF either it's greater
+    /// than the current high score or there's no existing high score yet.
+    func saveHighScore() {
+        let highScore: String? = UserDefaults.standard.value(forKey: "HighScore") as? String
+        
+        if highScore == nil || (Int(score) ?? 0) > (Int(highScore ?? "0") ?? 0) {
+            UserDefaults.standard.setValue(score, forKey: "HighScore")
+        }
     }
     
     /// Show the end game screen after the given delay.
