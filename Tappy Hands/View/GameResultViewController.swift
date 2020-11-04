@@ -61,36 +61,10 @@ class GameResultViewController: UIViewController {
         return label
     }()
     
-    private let shareViaTwitterButton: THButton = {
+    private let shareButton: THButton = {
         let button: THButton = THButton(type: .custom)
         button.setup(
-            withTitle: "Share via Twitter",
-            font: UIFont.systemFont(ofSize: 25, weight: .black),
-            textColor: UIColor.white
-        )
-        button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 4.0
-        return button
-    }()
-    
-    private let shareViaEmailButton: THButton = {
-        let button: THButton = THButton(type: .custom)
-        button.setup(
-            withTitle: "Share via Email",
-            font: UIFont.systemFont(ofSize: 25, weight: .black),
-            textColor: UIColor.white
-        )
-        button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 4.0
-        return button
-    }()
-    
-    private let shareViaSMSButton: THButton = {
-        let button: THButton = THButton(type: .custom)
-        button.setup(
-            withTitle: "Share via SMS",
+            withTitle: "Share",
             font: UIFont.systemFont(ofSize: 25, weight: .black),
             textColor: UIColor.white
         )
@@ -130,20 +104,13 @@ class GameResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: Selector Setup
-        restartButton.addTarget(
-            self, action: #selector(didTapRestart),
-            for: .touchUpInside
-        )
+        setupSelectors()
         
         // MARK: Subviews
         view.addSubviews(
             backgroundImageView,
             scoreTitleLabel, scoreValueLabel,
-            shareScoreTitleLabel,
-            shareViaTwitterButton,
-            shareViaEmailButton,
-            shareViaSMSButton,
+            shareScoreTitleLabel, shareButton,
             restartButton
         )
         
@@ -169,34 +136,35 @@ class GameResultViewController: UIViewController {
             
             // Share score title
             shareScoreTitleLabel.heightAnchor.constraint(equalToConstant: 60),
-            shareScoreTitleLabel.topAnchor.constraint(equalTo: scoreValueLabel.bottomAnchor, constant: 8),
+            shareScoreTitleLabel.topAnchor.constraint(equalTo: scoreValueLabel.bottomAnchor, constant: 24),
             shareScoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             shareScoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
             // Share via Twitter button
-            shareViaTwitterButton.heightAnchor.constraint(equalToConstant: 40),
-            shareViaTwitterButton.topAnchor.constraint(equalTo: shareScoreTitleLabel.bottomAnchor, constant: 8),
-            shareViaTwitterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            shareViaTwitterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            
-            // Share via Email button
-            shareViaEmailButton.heightAnchor.constraint(equalToConstant: 40),
-            shareViaEmailButton.topAnchor.constraint(equalTo: shareViaTwitterButton.bottomAnchor, constant: 8),
-            shareViaEmailButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            shareViaEmailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            
-            // Share via SMS button
-            shareViaSMSButton.heightAnchor.constraint(equalToConstant: 40),
-            shareViaSMSButton.topAnchor.constraint(equalTo: shareViaEmailButton.bottomAnchor, constant: 8),
-            shareViaSMSButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            shareViaSMSButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            shareButton.heightAnchor.constraint(equalToConstant: 60),
+            shareButton.topAnchor.constraint(equalTo: shareScoreTitleLabel.bottomAnchor, constant: 24),
+            shareButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            shareButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
             // Restart button
-            restartButton.topAnchor.constraint(equalTo: shareViaSMSButton.bottomAnchor, constant: 8),
+            restartButton.topAnchor.constraint(equalTo: shareButton.bottomAnchor, constant: 24),
             restartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             restartButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             restartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+    }
+    
+}
+
+// MARK: - Selector Setup
+
+extension GameResultViewController {
+    
+    private func setupSelectors() {
+        restartButton.addTarget(
+            self, action: #selector(didTapRestart),
+            for: .touchUpInside
+        )
     }
     
 }
