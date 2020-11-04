@@ -107,7 +107,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         // MARK: Selector Setup
-        
         tapMeButton.addTarget(
             self, action: #selector(didTapTapMe),
             for: .touchUpInside
@@ -167,7 +166,7 @@ class GameViewController: UIViewController {
     
 }
 
-// MARK: - GameDelegate
+// MARK: - Selectors
 
 extension GameViewController {
     
