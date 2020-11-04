@@ -5,6 +5,7 @@
 //  Created by Failyn Kaye M. Sedik on 11/4/20.
 //
 
+import MessageUI
 import UIKit
 
 class GameResultViewController: UIViewController {
@@ -187,6 +188,11 @@ extension GameResultViewController {
             for: .touchUpInside
         )
         
+        shareViaEmailButton.addTarget(
+            self, action: #selector(didTapShareViaEmail),
+            for: .touchUpInside
+        )
+        
         restartButton.addTarget(
             self, action: #selector(didTapRestart),
             for: .touchUpInside
@@ -209,9 +215,42 @@ extension GameResultViewController {
         present(activityVC, animated: true, completion: nil)
     }
     
+    @objc private func didTapShareViaEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposeVC: MFMailComposeViewController = MFMailComposeViewController()
+            mailComposeVC.mailComposeDelegate = self
+            mailComposeVC.setToRecipients(nil)
+            mailComposeVC.setSubject("I bet you can't beat me!")
+            mailComposeVC.setMessageBody("My final score is: \(viewModel.score)", isHTML: false)
+            present(mailComposeVC, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(
+                title: "Accounts",
+                message: "Please log in to your email account.",
+                preferredStyle: .alert
+            )
+            alertController.addAction(UIAlertAction(title: "OKAY", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     @objc private func didTapRestart() {
         dismiss(animated: false, completion: nil)
         presentingViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension GameResultViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
