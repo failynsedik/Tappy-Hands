@@ -11,7 +11,7 @@ class GameResultViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var viewModel: GameViewModel!
+    private var viewModel: GameResultViewModel!
     
     // MARK: - View Properties
     
@@ -93,6 +93,7 @@ class GameResultViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         scoreValueLabel.text = score
+        viewModel = GameResultViewModel(score: score)
     }
 
     required init?(coder: NSCoder) {
@@ -161,6 +162,11 @@ class GameResultViewController: UIViewController {
 extension GameResultViewController {
     
     private func setupSelectors() {
+        shareButton.addTarget(
+            self, action: #selector(didTapShare),
+            for: .touchUpInside
+        )
+        
         restartButton.addTarget(
             self, action: #selector(didTapRestart),
             for: .touchUpInside
@@ -172,6 +178,16 @@ extension GameResultViewController {
 // MARK: - Selectors
 
 extension GameResultViewController {
+    
+    @objc private func didTapShare() {
+        let activityItems = ["My final score is: \(viewModel.score)"]
+        let activityVC: UIActivityViewController = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+        activityVC.popoverPresentationController?.sourceView = self.view
+        present(activityVC, animated: true, completion: nil)
+    }
     
     @objc private func didTapRestart() {
         dismiss(animated: false, completion: nil)
