@@ -19,6 +19,7 @@
 		3B5B71B025519114006AE954 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71AF25519114006AE954 /* GameViewController.swift */; };
 		3B5B71B32551915F006AE954 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71B22551915F006AE954 /* UIView+Shadow.swift */; };
 		3B5B71B725519900006AE954 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71B625519900006AE954 /* GameViewModel.swift */; };
+		3B5B71BC2552930D006AE954 /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71BB2552930D006AE954 /* GameResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3B5B71AF25519114006AE954 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3B5B71B22551915F006AE954 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		3B5B71B625519900006AE954 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewModel.swift; path = "Tappy Hands/ViewModel/GameViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		3B5B71BB2552930D006AE954 /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				3B5B7174254D2474006AE954 /* HomeViewController.swift */,
 				3B5B71AF25519114006AE954 /* GameViewController.swift */,
+				3B5B71BB2552930D006AE954 /* GameResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				3B5B7194254DCEE3006AE954 /* UIButton+Attributed.swift in Sources */,
 				3B5B71A7254DE3B4006AE954 /* THButton.swift in Sources */,
+				3B5B71BC2552930D006AE954 /* GameResultViewController.swift in Sources */,
 				3B5B715D254C1913006AE954 /* AppDelegate.swift in Sources */,
 				3B5B7188254DCBCD006AE954 /* UIColor+Hex.swift in Sources */,
 				3B5B71B025519114006AE954 /* GameViewController.swift in Sources */,
