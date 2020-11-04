@@ -22,6 +22,7 @@
 		3B5B71BC2552930D006AE954 /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71BB2552930D006AE954 /* GameResultViewController.swift */; };
 		3B5B71BF25529623006AE954 /* GameResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71BE25529623006AE954 /* GameResultViewModel.swift */; };
 		3B5B71C2255299D7006AE954 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B71C1255299D7006AE954 /* HomeViewModel.swift */; };
+		3B5B71CB2552A316006AE954 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5B71CA2552A316006AE954 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3B5B71BB2552930D006AE954 /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 		3B5B71BE25529623006AE954 /* GameResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewModel.swift; sourceTree = "<group>"; };
 		3B5B71C1255299D7006AE954 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3B5B71CA2552A316006AE954 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5B71CB2552A316006AE954 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 			children = (
 				3B5B715B254C1913006AE954 /* Tappy Hands */,
 				3B5B715A254C1913006AE954 /* Products */,
+				3B5B71C92552A316006AE954 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +168,14 @@
 				3B5B71A6254DE3B4006AE954 /* THButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3B5B71C92552A316006AE954 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B71CA2552A316006AE954 /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
