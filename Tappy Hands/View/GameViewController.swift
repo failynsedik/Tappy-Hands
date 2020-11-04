@@ -208,7 +208,9 @@ extension GameViewController: GameDelegate {
     }
     
     func gameViewModel(_ gameViewModel: GameViewModel, showEndGameWithScore score: String) {
-        // TODO: Create `EndGameViewController` and show it.
+        let gameResultVC = GameResultViewController(score: score)
+        gameResultVC.modalPresentationStyle = .fullScreen
+        present(gameResultVC, animated: false, completion: nil)
     }
     
 }
