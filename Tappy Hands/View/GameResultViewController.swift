@@ -131,6 +131,10 @@ class GameResultViewController: UIViewController {
         super.viewDidLoad()
         
         // MARK: Selector Setup
+        restartButton.addTarget(
+            self, action: #selector(didTapRestart),
+            for: .touchUpInside
+        )
         
         // MARK: Subviews
         view.addSubviews(
@@ -193,6 +197,17 @@ class GameResultViewController: UIViewController {
             restartButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             restartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+    }
+    
+}
+
+// MARK: - Selectors
+
+extension GameResultViewController {
+    
+    @objc private func didTapRestart() {
+        dismiss(animated: false, completion: nil)
+        presentingViewController?.dismiss(animated: false, completion: nil)
     }
     
 }
