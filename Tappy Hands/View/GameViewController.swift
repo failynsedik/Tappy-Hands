@@ -86,6 +86,7 @@ class GameViewController: UIViewController {
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
         button.clipsToBounds = true
         button.layer.cornerRadius = 4.0
+        button.isMultipleTouchEnabled = true
         button.isEnabled = false
         return button
     }()
