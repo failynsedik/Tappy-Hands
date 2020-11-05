@@ -110,7 +110,7 @@ class GameViewController: UIViewController {
         // MARK: Selector Setup
         tapMeButton.addTarget(
             self, action: #selector(didTapTapMe),
-            for: .touchUpInside
+            for: .touchDown
         )
         
         // MARK: Subviews
