@@ -29,12 +29,7 @@ extension THButton {
         get {
             return super.isHighlighted
         } set {
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.alpha = newValue ? 0.5 : 1.0
-                })
-            }
-            
+            self.alpha = newValue ? 0.5 : 1.0
             super.isHighlighted = newValue
         }
     }
