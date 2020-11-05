@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize the Mobile Ads SDK
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["ea3a5dc5a8a57d8500f4a72e51fae01e"]
         
         return true
     }
