@@ -5,6 +5,7 @@
 //  Created by Failyn Kaye M. Sedik on 10/31/20.
 //
 
+import GoogleMobileAds
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -62,6 +63,21 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    private lazy var adBannerView: GADBannerView = {
+        let view: GADBannerView = GADBannerView(
+            adSize: kGADAdSizeSmartBannerPortrait
+        )
+        view.backgroundColor = .white
+        view.delegate = self
+//        view.adUnitID = "ca-app-pub-3567467818788987/8902501347"
+        // TODO: Delete since this is only a test unit ID
+        view.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        view.rootViewController = self
+        view.load(GADRequest())
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -80,32 +96,48 @@ class HomeViewController: UIViewController {
         view.addSubviews(
             backgroundImageView, logoImageView,
             highScoreTitleLabel, highScoreValueLabel,
-            startGameButton
+            startGameButton,
+            adBannerView
         )
         
         // MARK: Constraint Setup
         NSLayoutConstraint.make([
+            // Background
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            // App logo
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             logoImageView.heightAnchor.constraint(equalTo: startGameButton.heightAnchor),
+            
+            // High Score title
             highScoreTitleLabel.heightAnchor.constraint(equalToConstant: 75),
             highScoreTitleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
             highScoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             highScoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            
+            // High Score value
             highScoreValueLabel.heightAnchor.constraint(equalToConstant: 180),
             highScoreValueLabel.topAnchor.constraint(equalTo: highScoreTitleLabel.bottomAnchor, constant: 8),
             highScoreValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             highScoreValueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            
+            // Start Game button
             startGameButton.heightAnchor.constraint(equalTo: logoImageView.heightAnchor),
             startGameButton.topAnchor.constraint(equalTo: highScoreValueLabel.bottomAnchor, constant: 8),
             startGameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             startGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
+            startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            
+            // Ad Banner view
+            adBannerView.heightAnchor.constraint(equalToConstant: 50),
+            adBannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            adBannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -125,6 +157,20 @@ extension HomeViewController {
         gameVC.modalPresentationStyle = .fullScreen
         gameVC.modalTransitionStyle = .crossDissolve
         present(gameVC, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - GADBannerViewDelegate
+
+extension HomeViewController: GADBannerViewDelegate {
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.isHidden = false
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        bannerView.isHidden = true
     }
     
 }
