@@ -32,7 +32,9 @@ class HomeViewController: UIViewController {
     private let highScoreTitleLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "High Score"
-        label.font = UIFont.systemFont(ofSize: 40, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 65, weight: .black) :
+            UIFont.systemFont(ofSize: 40, weight: .black)
         label.textColor = UIColor(rgb: 0x3272EE)
         label.backgroundColor = .white
         label.textAlignment = .center
@@ -44,7 +46,9 @@ class HomeViewController: UIViewController {
     private let highScoreValueLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "0"
-        label.font = UIFont.systemFont(ofSize: 70, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 90, weight: .black) :
+            UIFont.systemFont(ofSize: 70, weight: .black)
         label.textColor = .white
         label.textAlignment = .center
         return label
@@ -54,7 +58,9 @@ class HomeViewController: UIViewController {
         let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Start Game",
-            font: UIFont.systemFont(ofSize: 40, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 80, weight: .black) :
+                UIFont.systemFont(ofSize: 40, weight: .black),
             textColor: UIColor.white
         )
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
@@ -92,6 +98,21 @@ class HomeViewController: UIViewController {
             for: .touchUpInside
         )
         
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        highScoreValueLabel.text = viewModel.highScore
+    }
+    
+}
+
+// MARK: - Initial Setup
+
+extension HomeViewController {
+    
+    private func setupUI() {
         // MARK: Subviews
         view.addSubviews(
             backgroundImageView, logoImageView,
@@ -114,14 +135,12 @@ class HomeViewController: UIViewController {
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             logoImageView.heightAnchor.constraint(equalTo: startGameButton.heightAnchor),
             
-            // High Score title
-            highScoreTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+            // High Score title common constraint
             highScoreTitleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
             highScoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             highScoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // High Score value
-            highScoreValueLabel.heightAnchor.constraint(equalToConstant: 180),
+            // High Score value common constraint
             highScoreValueLabel.topAnchor.constraint(equalTo: highScoreTitleLabel.bottomAnchor, constant: 8),
             highScoreValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             highScoreValueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
@@ -139,11 +158,24 @@ class HomeViewController: UIViewController {
             adBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             adBannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        highScoreValueLabel.text = viewModel.highScore
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            NSLayoutConstraint.make([
+                // High Score title
+                highScoreTitleLabel.heightAnchor.constraint(equalToConstant: 95),
+                
+                // High Score value
+                highScoreValueLabel.heightAnchor.constraint(equalToConstant: 220)
+            ])
+        } else {
+            NSLayoutConstraint.make([
+                // High Score title
+                highScoreTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+                
+                // High Score value
+                highScoreValueLabel.heightAnchor.constraint(equalToConstant: 180)
+            ])
+        }
     }
     
 }

@@ -26,7 +26,9 @@ class GameResultViewController: UIViewController {
     private let scoreTitleLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "Score"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 65, weight: .black) :
+            UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = UIColor(rgb: 0x3272EE)
         label.backgroundColor = .white
         label.textAlignment = .center
@@ -38,7 +40,9 @@ class GameResultViewController: UIViewController {
     private let scoreValueLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "0"
-        label.font = UIFont.systemFont(ofSize: 45, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 90, weight: .black) :
+            UIFont.systemFont(ofSize: 45, weight: .black)
         label.textColor = .white
         label.textAlignment = .center
         label.addShadow(
@@ -53,7 +57,9 @@ class GameResultViewController: UIViewController {
     private let shareScoreTitleLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "Share Score"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 65, weight: .black) :
+            UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = UIColor(rgb: 0x3272EE)
         label.backgroundColor = .white
         label.textAlignment = .center
@@ -66,7 +72,9 @@ class GameResultViewController: UIViewController {
         let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Share",
-            font: UIFont.systemFont(ofSize: 25, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 40, weight: .black) :
+                UIFont.systemFont(ofSize: 25, weight: .black),
             textColor: UIColor.white
         )
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
@@ -79,7 +87,9 @@ class GameResultViewController: UIViewController {
         let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Share via Email",
-            font: UIFont.systemFont(ofSize: 25, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 40, weight: .black) :
+                UIFont.systemFont(ofSize: 25, weight: .black),
             textColor: UIColor.white
         )
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
@@ -92,7 +102,9 @@ class GameResultViewController: UIViewController {
         let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Restart",
-            font: UIFont.systemFont(ofSize: 50, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 80, weight: .black) :
+                UIFont.systemFont(ofSize: 50, weight: .black),
             textColor: UIColor.white
         )
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
@@ -120,7 +132,16 @@ class GameResultViewController: UIViewController {
         super.viewDidLoad()
         
         setupSelectors()
-        
+        setupUI()
+    }
+    
+}
+
+// MARK: - Initial Setup
+
+extension GameResultViewController {
+    
+    private func setupUI() {
         // MARK: Subviews
         view.addSubviews(
             backgroundImageView,
@@ -138,32 +159,27 @@ class GameResultViewController: UIViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            // Score title
-            scoreTitleLabel.heightAnchor.constraint(equalToConstant: 60),
+            // Score title common constraint
             scoreTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             scoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Score value
-            scoreValueLabel.heightAnchor.constraint(equalToConstant: 63.5),
+            // Score value common constraint
             scoreValueLabel.topAnchor.constraint(equalTo: scoreTitleLabel.bottomAnchor, constant: 8),
             scoreValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scoreValueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Share score title
-            shareScoreTitleLabel.heightAnchor.constraint(equalToConstant: 60),
+            // Share score title common constraint
             shareScoreTitleLabel.topAnchor.constraint(equalTo: scoreValueLabel.bottomAnchor, constant: 24),
             shareScoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             shareScoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Share button
-            shareButton.heightAnchor.constraint(equalToConstant: 60),
+            // Share button common constraint
             shareButton.topAnchor.constraint(equalTo: shareScoreTitleLabel.bottomAnchor, constant: 8),
             shareButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             shareButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Share via Email button
-            shareViaEmailButton.heightAnchor.constraint(equalToConstant: 60),
+            // Share via Email button common constraint
             shareViaEmailButton.topAnchor.constraint(equalTo: shareButton.bottomAnchor, constant: 8),
             shareViaEmailButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             shareViaEmailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
@@ -174,6 +190,42 @@ class GameResultViewController: UIViewController {
             restartButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             restartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            NSLayoutConstraint.make([
+                // Score title
+                scoreTitleLabel.heightAnchor.constraint(equalToConstant: 95),
+                
+                // Score value
+                scoreValueLabel.heightAnchor.constraint(equalToConstant: 200),
+                
+                // Share score title
+                shareScoreTitleLabel.heightAnchor.constraint(equalToConstant: 95),
+                
+                // Share button
+                shareButton.heightAnchor.constraint(equalToConstant: 95),
+                
+                // Share via Email button
+                shareViaEmailButton.heightAnchor.constraint(equalToConstant: 95),
+            ])
+        } else {
+            NSLayoutConstraint.make([
+                // Score title
+                scoreTitleLabel.heightAnchor.constraint(equalToConstant: 60),
+                
+                // Score value
+                scoreValueLabel.heightAnchor.constraint(equalToConstant: 63.5),
+                
+                // Share score title
+                shareScoreTitleLabel.heightAnchor.constraint(equalToConstant: 60),
+                
+                // Share button
+                shareButton.heightAnchor.constraint(equalToConstant: 60),
+                
+                // Share via Email button
+                shareViaEmailButton.heightAnchor.constraint(equalToConstant: 60),
+            ])
+        }
     }
     
 }

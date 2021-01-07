@@ -25,7 +25,9 @@ class GameViewController: UIViewController {
     private let timeTitleLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "Time Remaining"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 65, weight: .black) :
+            UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = UIColor(rgb: 0x3272EE)
         label.backgroundColor = .white
         label.textAlignment = .center
@@ -37,7 +39,9 @@ class GameViewController: UIViewController {
     private let timeValueLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "10"
-        label.font = UIFont.systemFont(ofSize: 45, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 85, weight: .black) :
+            UIFont.systemFont(ofSize: 45, weight: .black)
         label.textColor = .white
         label.textAlignment = .center
         label.addShadow(
@@ -52,7 +56,9 @@ class GameViewController: UIViewController {
     private let scoreTitleLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "Score"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 65, weight: .black) :
+            UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = UIColor(rgb: 0x3272EE)
         label.backgroundColor = .white
         label.textAlignment = .center
@@ -64,7 +70,9 @@ class GameViewController: UIViewController {
     private let scoreValueLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "0"
-        label.font = UIFont.systemFont(ofSize: 45, weight: .black)
+        label.font = UIDevice.current.userInterfaceIdiom == .pad ?
+            UIFont.systemFont(ofSize: 85, weight: .black) :
+            UIFont.systemFont(ofSize: 45, weight: .black)
         label.textColor = .white
         label.textAlignment = .center
         label.addShadow(
@@ -80,7 +88,9 @@ class GameViewController: UIViewController {
         let button: THButton = THButton(type: .custom)
         button.setup(
             withTitle: "Tap Me",
-            font: UIFont.systemFont(ofSize: 50, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 90, weight: .black) :
+                UIFont.systemFont(ofSize: 50, weight: .black),
             textColor: UIColor.white
         )
         button.backgroundColor = UIColor(rgb: 0x4370CC, alpha: 0.85)
@@ -113,6 +123,20 @@ class GameViewController: UIViewController {
             for: .touchDown
         )
         
+        setupUI()
+        
+        // MARK: viewDidLoad viewModel Calls
+        viewModel.setInitialValues()
+        viewModel.startCountdownTimer()
+    }
+    
+}
+
+// MARK: - Initial Setup
+
+extension GameViewController {
+    
+    private func setupUI() {
         // MARK: Subviews
         view.addSubviews(
             backgroundImageView,
@@ -129,26 +153,22 @@ class GameViewController: UIViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            // Time title
-            timeTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+            // Time title common constraint
             timeTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
             timeTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             timeTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Time value
-            timeValueLabel.heightAnchor.constraint(equalToConstant: 85),
+            // Time value common constraint
             timeValueLabel.topAnchor.constraint(equalTo: timeTitleLabel.bottomAnchor, constant: 8),
             timeValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             timeValueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Score title
-            scoreTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+            // Score title common constraint
             scoreTitleLabel.topAnchor.constraint(equalTo: timeValueLabel.bottomAnchor, constant: 8),
             scoreTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scoreTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            // Score value
-            scoreValueLabel.heightAnchor.constraint(equalToConstant: 85),
+            // Score value common constraint
             scoreValueLabel.topAnchor.constraint(equalTo: scoreTitleLabel.bottomAnchor, constant: 8),
             scoreValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scoreValueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
@@ -160,9 +180,35 @@ class GameViewController: UIViewController {
             tapMeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
         
-        // MARK: viewDidLoad viewModel Calls
-        viewModel.setInitialValues()
-        viewModel.startCountdownTimer()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            NSLayoutConstraint.make([
+                // Time title
+                timeTitleLabel.heightAnchor.constraint(equalToConstant: 95),
+                
+                // Time value
+                timeValueLabel.heightAnchor.constraint(equalToConstant: 200),
+                
+                // Score title
+                scoreTitleLabel.heightAnchor.constraint(equalToConstant: 95),
+                
+                // Score value
+                scoreValueLabel.heightAnchor.constraint(equalToConstant: 200)
+            ])
+        } else {
+            NSLayoutConstraint.make([
+                // Time title
+                timeTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+                
+                // Time value
+                timeValueLabel.heightAnchor.constraint(equalToConstant: 85),
+                
+                // Score title
+                scoreTitleLabel.heightAnchor.constraint(equalToConstant: 75),
+                
+                // Score value
+                scoreValueLabel.heightAnchor.constraint(equalToConstant: 85)
+            ])
+        }
     }
     
 }
@@ -188,7 +234,9 @@ extension GameViewController: GameDelegate {
     ) {
         tapMeButton.setup(
             withTitle: title,
-            font: UIFont.systemFont(ofSize: 50, weight: .black),
+            font: UIDevice.current.userInterfaceIdiom == .pad ?
+                UIFont.systemFont(ofSize: 90, weight: .black) :
+                UIFont.systemFont(ofSize: 50, weight: .black),
             textColor: UIColor.white
         )
         
