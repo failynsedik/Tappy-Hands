@@ -23,7 +23,7 @@ This project is something I did based on an old Udemy tutorial. The following ar
 ---
 
 ### TODO:
-- [ ] Fix screen layout on landscape mode
+~- [ ] Fix screen layout on landscape mode~
 - [ ] In-app purchase
 - [ ] App icon
 - [ ] Layout support for iPad
